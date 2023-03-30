@@ -14,6 +14,8 @@ let inputTypeLitres = document.querySelector(".form__input-type--litres");
 const statusMsg = document.querySelector('.status');
 const statusResponse = document.querySelector('.status-response');
 const resetBtn = document.querySelector('.reset__btn')
+const inputConsumption = document.getElementById("form__input--consumption")
+const inputLocation = document.getElementById("form__input--location")
 
 resetBtn.addEventListener('click', ()=>{
   window.location.reload()
@@ -44,6 +46,42 @@ const clear = ()=>{
     html = ''
 }
 
+function tradEnergy(consumptionVal, locationVal){
+
+  const encodedParams = new URLSearchParams();
+  encodedParams.append("consumption", `${consumptionVal}`);
+  encodedParams.append("location", `${locationVal}`);
+  const options = {
+    method: 'POST',
+    headers: {
+		'content-type': 'application/x-www-form-urlencoded',
+		'X-RapidAPI-Key': 'f3ac58eedcmsh158cae8631cd06ep1ae4a0jsnce95e6464a1d',
+		'X-RapidAPI-Host': 'tracker-for-carbon-footprint-api.p.rapidapi.com'
+	},
+	body: encodedParams
+};
+
+const trackTE = async function (){
+  try{
+    const response = await fetch('https://tracker-for-carbon-footprint-api.p.rapidapi.com/traditionalHydro', options)
+    if(!response.ok) throw new Error('Problem getting the results')
+    const data = await response.json();
+    console.log(data.carbon)
+    if(!data.succcess){
+        renderStatus(data.carbon) 
+    }else{
+      renderStatus("Incorrect infomation provided")
+    } 
+  }catch(err){
+    console.error(err)
+  }
+}  
+formBtn.addEventListener("click", function(e){
+  trackTE
+  e.preventDefault()
+})
+}
+
 inputType.addEventListener("change", filterList);
 
 function filterList(e) {
@@ -52,11 +90,7 @@ function filterList(e) {
   let selectedOption = inputType.value;
   if (selectedOption === userActivities.energy) { 
     clear();
-    const inputConsumption = document.getElementById("form__input--consumption")
-const inputLocation = document.getElementById("form__input--location")
 
-const consumptionVal = inputConsumption ? inputConsumption.value : '';
-const locationVal = inputLocation ? inputLocation.value : '';
     html = `
         <div data-option="traditional-energy">
         <div class="form__row">
@@ -76,11 +110,9 @@ const locationVal = inputLocation ? inputLocation.value : '';
       </div>
       </div>   
         `;
-
-      formBtn.addEventListener("click", function(e){
-      trackTE()
-    e.preventDefault()
-  })
+        const consumptionVal = inputConsumption ? inputConsumption.value : '';
+        const locationVal = inputLocation ? inputLocation.value : '';
+        tradEnergy(consumptionVal, locationVal)
   } else if (selectedOption === userActivities.flight) {
     clear()
     html = `
@@ -170,40 +202,6 @@ const locationVal = inputLocation ? inputLocation.value : '';
   form.insertAdjacentHTML('beforeend', html);
 }
 
-
-function TE(consumptionVal, locationVal){
-
-  const encodedParams = new URLSearchParams();
-  encodedParams.append("consumption", `${consumptionVal}`);
-  encodedParams.append("location", `${locationVal}`);
-  const options = {
-    method: 'POST',
-	headers: {
-		'content-type': 'application/x-www-form-urlencoded',
-		'X-RapidAPI-Key': 'f3ac58eedcmsh158cae8631cd06ep1ae4a0jsnce95e6464a1d',
-		'X-RapidAPI-Host': 'tracker-for-carbon-footprint-api.p.rapidapi.com'
-	},
-	body: encodedParams
-};
-
-const trackTE = async function (){
-  try{
-    const response = await fetch('https://tracker-for-carbon-footprint-api.p.rapidapi.com/traditionalHydro', options)
-    if(!response.ok) throw new Error('Problem getting the results')
-    const data = await response.json();
-    console.log(data.carbon)
-    if(!data.succcess){
-        renderStatus(data.carbon) 
-        console.log(data)
-    }else{
-      renderStatus("Incorrect infomation provided")
-    } 
-  }catch(err){
-    console.error(err)
-  }
-}
-trackTE()
-}
 
 // function fuelCarbon(){
 //     const encodedParams = new URLSearchParams();
