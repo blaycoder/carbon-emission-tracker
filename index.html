@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    
+    <title>Carbon Emmission Tracker</title>
+</head>
+<body>
+  <div class="container"> 
+  <div class="title">
+    <h3> Carbon Emmission Tracker</h3>
+  </div> 
+  <p>
+     <ul class="carbonEmmision">
+        <form class="form hidden" method="GET">
+          <div class="form__row">
+            <label class="form__label">Activities Type: </label>
+            <select class="form__input form__input--type">
+                <option value="">Select an activity</option>
+              <option value="traditional-energy">Traditional Energy</option>
+              <option value="public-transit">Public Transit</option>
+              <option value="flight">Flight</option>
+              <option value="fuel-carbon">Fuel to Carbon</option>
+              <option value="clean-energy">Clean Energy</option>
+            </select>
+          </div>
+
+          <div class="details"></div> 
+        </form>   
+        <button type="submit" class="form__btn">Track</button>
+        <button type="reset" class="form__btn reset__btn">Reset</button>
+        <div class="status-response">
+                    
+          </div>
+     
+      </ul>
+  </p>
+  </div> 
+      <script src="script.js"></script> 
+</body>
+</html>
