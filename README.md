@@ -5,6 +5,12 @@
 * ONATOLA AYOMIDE
 * SHIVAM PRATEL
 
+## Problem Statement
+The excessive release of greenhouse gases into the atmosphere, particularly carbon dioxide, is what leads to the worldwide problem of climate change. The primary sources of carbon emissions are human activities like manufacturing, transportation, and the production of energy. People frequently underestimate how much carbon they actually emit from their everyday activities. Motivating people to act and reduce their carbon footprint is difficult due to this dearth of awareness.
+
+Therefore, a system that allows people to precisely track their daily carbon emissions must be created. Individuals can make wise decisions about their daily activities that increase carbon emissions by being given this knowledge. Additionally, the system ought to offer recommendations for actions that produce less carbon dioxide or actions that directly lower carbon dioxide emissions, like planting trees.
+
+By gathering information on individual behavior and offering tailored recommendations to lower carbon emissions, the initiative hopes to get better over time. The project can encourage people to adopt more environmentally sustainable lifestyles and support the battle against climate change by raising awareness and offering solutions to reduce carbon emissions.
 
 ## Challenges faced
 * Find a good API that could help in acheiving the solution
