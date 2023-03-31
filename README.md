@@ -1,8 +1,8 @@
 # carbon-emission-tracker
 
 ## TEAM Zero-X 
+* OGIDAN HOPE (TEAM LEAD)
 * ONATOLA AYOMIDE
-* OGIDAN HOPE
 * SHIVAM PRATEL
 
 
