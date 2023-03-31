@@ -24,4 +24,4 @@ We hope to improve the project, fix the neccessary bug and refactor the code.
 
 
 To check the live link, click on the link below: 
-"[github.com/blaycoder/carbon-emission-tracker]"
+"(github.com/blaycoder/carbon-emission-tracker)"
