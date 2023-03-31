@@ -17,7 +17,7 @@ By gathering information on individual behavior and offering tailored recommenda
 * Connecting the selected option to its API
 * Whenever the user type into the input field and the value is fetch, it displays it as a null value.
 
-## Challenges Solved
+## Solved Challenges 
 * We were able to use tracker for carbon footprint API, we discovered that in rapidapi.com
 * We were able to connect the selected option to its API
 
