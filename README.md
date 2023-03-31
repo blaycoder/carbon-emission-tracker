@@ -17,10 +17,12 @@ The carbon emission tacker tracks and gives the result of carbon individuals emm
 * Connecting the selected option to its API
 * Whenever the user type into the input field and the value is fetch, it displays it as a null value.
 
-We had fun building the project even though we started at the last hour and this was because everyone in the team were preparing for their exam and also a team member already 
-started his exam but still we stick together and was able to do some thing. Thanks to Bunmi's words of encouragement.
+## Challenges Solved
+* We were able to use tracker for carbon footprint API, we discovered that in rapidapi.com
+* We were able to connect the selected option to its API
 
-We hope to improve the project, fix the neccessary bug and refactor the code.
+We had fun building the project even though we started at the last hour and this was because members in the team were preparing for their examss and a team member already started his exam but still we sticked together and was able to build something. Thanks to Bunmi's words of encouragement that "no matter what stage you are in your project, it will only be judged if you submit it". 
 
+We hope to improve the project, fix the neccessary bug, refactor the code and add more features like tracking how any times you tracked your activities, suggestions on what to do if the carbon emmitted is high etc probably after our exams. LOL
 
-[project link](github.com/blaycoder/carbon-emission-tracker)
+Click on the [project link](github.com/blaycoder/carbon-emission-tracker)
