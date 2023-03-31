@@ -48,11 +48,10 @@ const clear = ()=>{
 
 
 // Traditional Energy Function
-function tradEnergy(consumptionVal, locationVal){
 
   const encodedParams = new URLSearchParams();
-  encodedParams.append("consumption", `${consumptionVal}`);
-  encodedParams.append("location", `${locationVal}`);
+  encodedParams.append("consumption", "500");
+  encodedParams.append("location", "USA");
   const options = {
     method: 'POST',
     headers: {
@@ -78,13 +77,12 @@ const trackTE = async function (){
     console.error(err)
   }
 }  
+
+
 formBtn.addEventListener("click", function(e){
-  trackTE
   e.preventDefault()
+  trackTE()
 })
-}
-
-
 // Add event listener to select option
 inputType.addEventListener("change", filterList);
 
@@ -115,9 +113,12 @@ function filterList(e) {
       </div>
       </div>   
         `;
-        const consumptionVal = inputConsumption ? inputConsumption.value : '';
-        const locationVal = inputLocation ? inputLocation.value : '';
+        function outerFunction(){
+          let consumptionVal = inputConsumption ? inputConsumption.value : '';
+          let locationVal = inputLocation ? inputLocation.value : '';
         tradEnergy(consumptionVal, locationVal)
+        }
+       
   } else if (selectedOption === userActivities.flight) {
     clear()
     html = `
