@@ -6,12 +6,6 @@
 * SHIVAM PRATEL
 
 
-## Problem Statement
-How can we create awareness of carbon individuals emmit in their daily lives?
-
-## Problem Solution
-The carbon emission tacker tracks and gives the result of carbon individuals emmit in their daily lives in respect to their daily activities
-
 ## Challenges faced
 * Find a good API that could help in acheiving the solution
 * Connecting the selected option to its API
