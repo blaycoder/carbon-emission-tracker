@@ -12,6 +12,17 @@ Therefore, a system that allows people to precisely track their daily carbon emi
 
 By gathering information on individual behavior and offering tailored recommendations to lower carbon emissions, the initiative hopes to get better over time. The project can encourage people to adopt more environmentally sustainable lifestyles and support the battle against climate change by raising awareness and offering solutions to reduce carbon emissions.
 
+## Problem Solution
+With the help of a carbon footprint tracker system, which we developed, we can encourage people to live more environmentally responsible lives by making them conscious of their daily carbon emissions.
+
+The system uses the Tracker for Carbon Footprint API, a tool that lets people precisely track their daily carbon emissions. People can clearly grasp how much carbon they emit from their everyday activities by connecting to this API with your solution.
+
+Our solution calculates the amount of carbon emissions produced by everyday actions such as transportation, electricity use, and food consumption that users can input. To monitor their progress in lowering their carbon footprint, users can also examine their daily, weekly, or monthly total carbon emissions.
+
+Our solution also has features like tailored suggestions on how to cut carbon emissions, like walking instead of driving, using energy-efficient equipment, and following a plant-based diet, to make the system more interactive and user-friendly. Users can also get advice on how to reduce their carbon emissions, like planting trees or giving to green energy initiatives.
+
+In general, the goal of our solution is to inform and motivate people to reduce their carbon footprints and participate in the battle against climate change. Your answer has the potential to significantly influence the promotion of sustainability and a cleaner environment with future upgrades and added features.
+
 ## Challenges faced
 * Find a good API that could help in acheiving the solution
 * Connecting the selected option to its API
