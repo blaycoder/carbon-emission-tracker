@@ -46,6 +46,8 @@ const clear = ()=>{
     html = ''
 }
 
+
+// Traditional Energy Function
 function tradEnergy(consumptionVal, locationVal){
 
   const encodedParams = new URLSearchParams();
@@ -82,8 +84,11 @@ formBtn.addEventListener("click", function(e){
 })
 }
 
+
+// Add event listener to select option
 inputType.addEventListener("change", filterList);
 
+// Render the information for the selected option
 function filterList(e) {
 
   e.preventDefault()    
