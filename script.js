@@ -20,7 +20,8 @@ let inputLocation = document.querySelector(".form__input--location")
 resetBtn.addEventListener('click', ()=>{
   window.location.reload()
 })
-
+let fuelValue;
+let litresValue;
 let consumptionValue;
 let locationValue;
 const renderStatus = function (msg) {
@@ -48,25 +49,11 @@ const clear = ()=>{
 }
 
 
-// Traditional Energy Function
-
-// const encodedParams = new URLSearchParams();
-// encodedParams.append("consumption", "500");
-// encodedParams.append("location", "USA");
-// const options = {
-//   method: 'POST',
-//   headers: {
-//   'content-type': 'application/x-www-form-urlencoded',
-//   'X-RapidAPI-Key': 'ef717d6197msha13aa8e5d330360p10ccfejsnb888ea2165e0',
-//   'X-RapidAPI-Host': 'tracker-for-carbon-footprint-api.p.rapidapi.com'
-// },
-// body: encodedParams
-// };
-
-const trackTE = async function (){
+// Fuel to Carbon API
+const fuelC = async function(){
   const encodedParams = new URLSearchParams();
-  encodedParams.append("consumption", `${consumptionValue}`);
-  encodedParams.append("location", `${locationValue}`);
+  encodedParams.append("type", `${fuelValue}`);
+  encodedParams.append("litres", `${litresValue}`);
   const options = {
     method: 'POST',
     headers: {
@@ -77,10 +64,9 @@ const trackTE = async function (){
 	body: encodedParams
 };
 try{
-  const response = await fetch('https://tracker-for-carbon-footprint-api.p.rapidapi.com/traditionalHydro', options)
+  const response = await fetch('https://tracker-for-carbon-footprint-api.p.rapidapi.com/fuelToCO2e', options)
   if(!response.ok) throw new Error('Problem getting the results')
   const data = await response.json();
-  console.log(consumptionValue, locationValue)
   console.log(data.carbon)
   if(!data.succcess){
       renderStatus(data.carbon) 
@@ -90,14 +76,52 @@ try{
 }catch(err){
   console.error(err)
 }
-}  
+    }
 
-formBtn.addEventListener("click", function(e){
-e.preventDefault()
-trackTE()
-})
-// Add event listener to select option
-inputType.addEventListener("change", filterList);
+    formBtn.addEventListener("click", function(e){
+      e.preventDefault()
+      fuelC()
+      })
+      // Add event listener to select option
+      inputType.addEventListener("change", filterList);
+      
+
+// Traditional Energy API
+// const trackTE = async function (){
+//   const encodedParams = new URLSearchParams();
+//   encodedParams.append("consumption", `${consumptionValue}`);
+//   encodedParams.append("location", `${locationValue}`);
+//   const options = {
+//     method: 'POST',
+//     headers: {
+// 		'content-type': 'application/x-www-form-urlencoded',
+// 		'X-RapidAPI-Key': 'ef717d6197msha13aa8e5d330360p10ccfejsnb888ea2165e0',
+// 		'X-RapidAPI-Host': 'tracker-for-carbon-footprint-api.p.rapidapi.com'
+// 	},
+// 	body: encodedParams
+// };
+// try{
+//   const response = await fetch('https://tracker-for-carbon-footprint-api.p.rapidapi.com/traditionalHydro', options)
+//   if(!response.ok) throw new Error('Problem getting the results')
+//   const data = await response.json();
+//   console.log(consumptionValue, locationValue)
+//   console.log(data.carbon)
+//   if(!data.succcess){
+//       renderStatus(data.carbon) 
+//   }else{
+//     renderStatus("Incorrect infomation provided")
+//   } 
+// }catch(err){
+//   console.error(err)
+// }
+// }  
+
+// formBtn.addEventListener("click", function(e){
+// e.preventDefault()
+// trackTE()
+// })
+// // Add event listener to select option
+// inputType.addEventListener("change", filterList);
 
 
 // Render the information for the selected option
@@ -160,6 +184,7 @@ function filterList(e) {
             <input
               class="form__input form__input--type--fuel"
               placeholder="The type can be Petrol, Diesel, LPG."
+              oninput="fuelValue = this.value"
             />
           </div>
           <div class="form__row">
@@ -167,6 +192,7 @@ function filterList(e) {
             <input
               class="form__input form__input--litres"
               placeholder=""
+              oninput="litresValue = this.value"
             />
           </div>
           </div>
@@ -219,33 +245,7 @@ function filterList(e) {
 }
 
 
-// function fuelCarbon(){
-//     const encodedParams = new URLSearchParams();
-// encodedParams.append("type", `${inputTypeFuel.value}`);
-// encodedParams.append("litres", `${inputTypeLitres.value}`);
 
-// const options = {
-// 	method: 'POST',
-// 	headers: {
-// 		'content-type': 'application/x-www-form-urlencoded',
-// 		'X-RapidAPI-Key': 'f3ac58eedcmsh158cae8631cd06ep1ae4a0jsnce95e6464a1d',
-// 		'X-RapidAPI-Host': 'tracker-for-carbon-footprint-api.p.rapidapi.com'
-// 	},
-// 	body: encodedParams
-// };
-
-// const fuelC = async function(){
-//     try{
-//         const response = fetch('https://tracker-for-carbon-footprint-api.p.rapidapi.com/fuelToCO2e', options)
-//         if(!response.ok) throw new Error('Problem getting the results')
-//         const data = await response.json();
-//         console.log(data)
-//       }catch(err){
-//         console.error(err)
-//       }
-//     }
-//     fuelC()
-// }
 
 
 // function flight(){
