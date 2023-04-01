@@ -14,14 +14,15 @@ let inputTypeLitres = document.querySelector(".form__input-type--litres");
 const statusMsg = document.querySelector('.status');
 const statusResponse = document.querySelector('.status-response');
 const resetBtn = document.querySelector('.reset__btn')
-const inputConsumption = document.getElementById("form__input--consumption")
-const inputLocation = document.getElementById("form__input--location")
+let inputConsumption = document.querySelector(".form__input--consumption")
+let inputLocation = document.querySelector(".form__input--location")
 
 resetBtn.addEventListener('click', ()=>{
   window.location.reload()
 })
 
-
+let consumptionValue;
+let locationValue;
 const renderStatus = function (msg) {
     let text = `
     <div class="status-response">
@@ -49,42 +50,56 @@ const clear = ()=>{
 
 // Traditional Energy Function
 
-  const encodedParams = new URLSearchParams();
-  encodedParams.append("consumption", "500");
-  encodedParams.append("location", "USA");
-  const options = {
-    method: 'POST',
-    headers: {
-		'content-type': 'application/x-www-form-urlencoded',
-		'X-RapidAPI-Key': 'f3ac58eedcmsh158cae8631cd06ep1ae4a0jsnce95e6464a1d',
-		'X-RapidAPI-Host': 'tracker-for-carbon-footprint-api.p.rapidapi.com'
-	},
-	body: encodedParams
-};
+// const encodedParams = new URLSearchParams();
+// encodedParams.append("consumption", "500");
+// encodedParams.append("location", "USA");
+// const options = {
+//   method: 'POST',
+//   headers: {
+//   'content-type': 'application/x-www-form-urlencoded',
+//   'X-RapidAPI-Key': 'ef717d6197msha13aa8e5d330360p10ccfejsnb888ea2165e0',
+//   'X-RapidAPI-Host': 'tracker-for-carbon-footprint-api.p.rapidapi.com'
+// },
+// body: encodedParams
+// };
 
 const trackTE = async function (){
-  try{
-    const response = await fetch('https://tracker-for-carbon-footprint-api.p.rapidapi.com/traditionalHydro', options)
-    if(!response.ok) throw new Error('Problem getting the results')
-    const data = await response.json();
-    console.log(data.carbon)
-    if(!data.succcess){
-        renderStatus(data.carbon) 
-    }else{
-      renderStatus("Incorrect infomation provided")
-    } 
-  }catch(err){
-    console.error(err)
-  }
+  const encodedParams = new URLSearchParams();
+encodedParams.append("consumption", `${consumptionValue}`);
+encodedParams.append("location", `${locationValue}`);
+const options = {
+  method: 'POST',
+  headers: {
+  'content-type': 'application/x-www-form-urlencoded',
+  'X-RapidAPI-Key': 'ef717d6197msha13aa8e5d330360p10ccfejsnb888ea2165e0',
+  'X-RapidAPI-Host': 'tracker-for-carbon-footprint-api.p.rapidapi.com'
+},
+body: encodedParams
+};
+try{
+  const response = await fetch('https://tracker-for-carbon-footprint-api.p.rapidapi.com/traditionalHydro', options)
+  if(!response.ok) throw new Error('Problem getting the results')
+  const data = await response.json();
+  console.log(consumptionValue, locationValue)
+  console.log(data.carbon)
+  if(!data.succcess){
+      renderStatus(data.carbon) 
+  }else{
+    renderStatus("Incorrect infomation provided")
+  } 
+}catch(err){
+  console.error(err)
+}
 }  
 
 
 formBtn.addEventListener("click", function(e){
-  e.preventDefault()
-  trackTE()
+e.preventDefault()
+trackTE()
 })
 // Add event listener to select option
 inputType.addEventListener("change", filterList);
+
 
 // Render the information for the selected option
 function filterList(e) {
@@ -102,6 +117,7 @@ function filterList(e) {
           class="form__input form__input--consumption"
           placeholder="
           The KWH usage."
+          oninput="consumptionValue = this.value"
         />
       </div>
       <div class="form__row">
@@ -109,6 +125,7 @@ function filterList(e) {
         <input
           class="form__input form__input--location"
           placeholder=""
+          oninput="locationValue = this.value"
         />
       </div>
       </div>   
@@ -139,7 +156,6 @@ function filterList(e) {
             />
           </div>
           </div>
-
         `;
   } else if (selectedOption === userActivities.fuelCarbon) {
     clear()
