@@ -123,7 +123,7 @@ function filterList(e) {
         <label class="form__label">Location </label>
         <input
           class="form__input form__input--location"
-          placeholder=""
+          placeholder="(USA, Canada, UK, Europe, Africa, LatinAmerica, MiddleEast)"
           oninput="locationValue = this.value"
         />
       </div>
