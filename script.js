@@ -65,8 +65,8 @@ const clear = ()=>{
 
 const trackTE = async function (){
   const encodedParams = new URLSearchParams();
-  encodedParams.append("consumption", "500");
-  encodedParams.append("location", "USA");
+  encodedParams.append("consumption", `${consumptionValue}`);
+  encodedParams.append("location", `${locationValue}`);
   const options = {
     method: 'POST',
     headers: {
@@ -91,7 +91,6 @@ try{
   console.error(err)
 }
 }  
-
 
 formBtn.addEventListener("click", function(e){
 e.preventDefault()
@@ -130,11 +129,6 @@ function filterList(e) {
       </div>
       </div>   
         `;
-        function outerFunction(){
-          let consumptionVal = inputConsumption ? inputConsumption.value : '';
-          let locationVal = inputLocation ? inputLocation.value : '';
-        tradEnergy(consumptionVal, locationVal)
-        }
        
   } else if (selectedOption === userActivities.flight) {
     clear()
