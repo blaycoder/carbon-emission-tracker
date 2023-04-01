@@ -36,4 +36,4 @@ We had fun building the project even though we started at the last hour and this
 
 We hope to improve the project, fix the neccessary bug, refactor the code and add more features like tracking how any times you tracked your activities, suggestions on what to do if the carbon emmitted is high etc probably after our exams. LOL
 
-Click on the [project link](github.com/blaycoder/carbon-emission-tracker)
+Click on the [live link](https://blaycoder.github.io/carbon-emission-tracker/)

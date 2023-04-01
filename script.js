@@ -65,16 +65,16 @@ const clear = ()=>{
 
 const trackTE = async function (){
   const encodedParams = new URLSearchParams();
-encodedParams.append("consumption", `${consumptionValue}`);
-encodedParams.append("location", `${locationValue}`);
-const options = {
-  method: 'POST',
-  headers: {
-  'content-type': 'application/x-www-form-urlencoded',
-  'X-RapidAPI-Key': 'ef717d6197msha13aa8e5d330360p10ccfejsnb888ea2165e0',
-  'X-RapidAPI-Host': 'tracker-for-carbon-footprint-api.p.rapidapi.com'
-},
-body: encodedParams
+  encodedParams.append("consumption", "500");
+  encodedParams.append("location", "USA");
+  const options = {
+    method: 'POST',
+    headers: {
+		'content-type': 'application/x-www-form-urlencoded',
+		'X-RapidAPI-Key': 'f3ac58eedcmsh158cae8631cd06ep1ae4a0jsnce95e6464a1d',
+		'X-RapidAPI-Host': 'tracker-for-carbon-footprint-api.p.rapidapi.com'
+	},
+	body: encodedParams
 };
 try{
   const response = await fetch('https://tracker-for-carbon-footprint-api.p.rapidapi.com/traditionalHydro', options)
